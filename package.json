@@ -1,0 +1,15 @@
+{
+  "name": "com.ash-dvlpr.cinder-utils",
+  "version": "1.0.0",
+  "displayName": "Cinder Utils",
+  "description": "Collection of tools I made while working on Unity projects, bundled up in a package.",
+  "author": {
+    "name": "Ash Dev",
+    "email": "4sh.dvlpr@gmail.com",
+    "url": "https://github.com/ash-dvlpr"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "unity": "2022.1"
+}
