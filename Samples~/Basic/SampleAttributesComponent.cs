@@ -11,6 +11,7 @@ public class SampleAttributesComponent : MonoBehaviour {
     // DisabledAttribute
     [Header("Always disabled")]
     [Disabled] public string someText = "Hello";
+    [Disabled] public List<string> someTexts = new();
 
     // DisabledOnPlayAttribute
     [Header("Disabled on play mode")]
@@ -56,7 +57,7 @@ public struct TestData {
         public string name;
 
         // String values
-        [HideIf(nameof(name), "")]
+        [HideIf(nameof(name), null, "")]
         public string otherName;
     }
 }

@@ -8,7 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+ - Added base class for custom property drawers: `CinderPropertyDrawer`.
+
 ### Changed
+ - Improved `[ConditionalField]` attributes to take values as `object`, without converting to `string` internally, this allows to check for `null`.
+ - Improved examples for the `ConditionalFieldAttribute`.
+ - Made custom property drawers (`[Disabled]`, `[DisabledOnPlay]`, `[ConditionalField]`) extend `CinderPropertyDrawer`.
+ - Made the `[DisabledOnPlay]` attribute reuse `[Disabled]`'s code.
+
 ### Removed
 ### Fixed
 
