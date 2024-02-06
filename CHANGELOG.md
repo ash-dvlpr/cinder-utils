@@ -8,14 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+### Changed
+### Removed
+### Fixed
+
+
+## [v1.0.1] - 2024-02-06
+### Added
  - Added basic code examples under `Samples~/Basic`.
+ - Added `UPM Git Extension` to package dependencies.
 
 ### Changed
  - Updated `.gitignore` to ignore more IDE cache directories (`.vscode` and `.idea`).
  - Updated keywords on the `package.json`.
 
-### Removed
-### Fixed
 
 
 ## [v1.0.0] - 2024-02-06
@@ -45,5 +51,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.0.1...HEAD
+[v1.0.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.1
 [v1.0.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.0

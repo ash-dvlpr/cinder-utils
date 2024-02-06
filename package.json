@@ -1,6 +1,6 @@
 {
   "name": "com.ash-dvlpr.cinder-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "unity": "2022.1",
   "displayName": "Cinder Utils",
   "description": "Collection of tools I made while working on Unity projects, bundled up in a package.",
@@ -13,6 +13,9 @@
     "Utilities",
     "Utils"
   ],
+  "dependencies": {
+    "com.coffee.upm-git-extension": "git://github.com/mob-sakai/UpmGitExtension.git"
+  },
   "samples": [
     {
       "displayName": "Basic Examples",
