@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+ - Updated `.gitignore` to ignore more IDE cache directories (`.vscode` and `.idea`).
+
 ### Changed
 ### Removed
 ### Fixed
