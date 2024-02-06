@@ -13,4 +13,11 @@
     "Utilities",
     "Utils"
   ],
+  "samples": [
+    {
+      "displayName": "Basic Examples",
+      "description": "Contains some sample components/scripts that make use of the package.",
+      "path": "Samples~/Basic"
+    }
+  ]
 }
