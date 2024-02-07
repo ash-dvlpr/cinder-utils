@@ -6,6 +6,7 @@ using UnityEngine;
 
 using CinderUtils.Extensions;
 using System.Linq;
+using static UnityEngine.GraphicsBuffer;
 
 namespace CinderUtils.Reflection {
 
@@ -25,22 +26,30 @@ namespace CinderUtils.Reflection {
 
         // Returns all the subtypes of some Type T inside the target AssemblyTypes.
         // By default will only look in the Assembly_CSharp, and Assembly_CSharpEditor assemblies.
-        public static HashSet<Type> GetSubtypesOf<T>(ICollection<PredefinedAssembly> targetAssemblies = null) {
-            if (targetAssemblies.NullOrEmpty()) {
-                targetAssemblies = new List<PredefinedAssembly>() {
-                    PredefinedAssembly.Assembly_CSharp,
-                    PredefinedAssembly.Assembly_CSharpEditor,
-                };
-            }
+        public static HashSet<Type> GetSubtypesOf<T>(bool searchPredefinedAssemblies = true, ICollection<PredefinedAssembly> targetAssemblies = null) {
+            IEnumerable<Assembly> assemblies;
 
-            HashSet<Type> subtypes = new();
-            foreach (var target in targetAssemblies) {
-                if (PredefinedAssemblyCache.ContainsKey(target)) {
-                    GetSubtypesInAssemblyOf<T>(PredefinedAssemblyCache[target]).ForEach(type => subtypes.Add(type));
+            // Select the assemblies to search
+            if (searchPredefinedAssemblies) {
+                // Place in the default ones if no target assemblies were specified
+                if (targetAssemblies.NullOrEmpty()) {
+                    targetAssemblies = new List<PredefinedAssembly>() {
+                        PredefinedAssembly.Assembly_CSharp,
+                        PredefinedAssembly.Assembly_CSharpEditor,
+                    };
                 }
+
+                // Filter the PredefinedAssemblies
+                assemblies = targetAssemblies.Where(
+                    t => PredefinedAssemblyCache.ContainsKey(t)
+                ).Select(t => PredefinedAssemblyCache[t]);
+            }
+            else {
+                assemblies = AppDomain.CurrentDomain.GetAssemblies();
             }
 
-            return subtypes;
+            // Search
+            return GetSubtypesInAssemblyOf<T>(assemblies);
         }
     }
 }

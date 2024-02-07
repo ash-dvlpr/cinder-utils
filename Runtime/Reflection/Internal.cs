@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 using CinderUtils.Extensions;
 
 
@@ -49,6 +48,16 @@ namespace CinderUtils.Reflection {
             return assemblyCache;
         }
 
+        internal static HashSet<Type> GetSubtypesInAssemblyOf<T>(IEnumerable<Assembly> assemblies) {
+            HashSet<Type> subtypes = new();
+
+            foreach (var asm in assemblies) {
+                GetSubtypesInAssemblyOf<T>(asm).ForEach(type => subtypes.Add(type));
+            }
+
+            return subtypes;
+        }
+
         internal static HashSet<Type> GetSubtypesInAssemblyOf<T>(Assembly assembly) {
             if (assembly == null) return null;
 
@@ -64,6 +73,7 @@ namespace CinderUtils.Reflection {
                 }
             }
 
+            subtypes.Remove(typeof(T));
             return subtypes;
         }
     }

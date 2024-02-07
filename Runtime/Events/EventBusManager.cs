@@ -22,22 +22,22 @@ namespace CinderUtils.Events {
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
         internal static void Initialize() {
-            eventTypes = AssemblyUtils.GetSubtypesOf<IEvent>();
+            eventTypes = AssemblyUtils.GetSubtypesOf<IEvent>(false);
             eventBusTypes = GetEventBusTypes();
 
             Debug.Log("CinderUtils.Events: EventBusManager initialized.");
         }
 
 #if UNITY_EDITOR
-        internal static PlayModeStateChange PlayModeState { get; set; }
+        static PlayModeStateChange PlayModeState { get; set; }
 
         [InitializeOnLoadMethod]
-        internal static void InitializeEditor() {
+        static void InitializeEditor() {
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
         }
 
-        internal static void OnPlayModeStateChanged(PlayModeStateChange state) {
+        static void OnPlayModeStateChanged(PlayModeStateChange state) {
             PlayModeState = state;
             if (state == PlayModeStateChange.ExitingPlayMode) {
                 ClearBuses();
@@ -58,11 +58,13 @@ namespace CinderUtils.Events {
             return eventBusTypes;
         }
 
-        public static void ClearBuses() {
+        static void ClearBuses() {
             foreach (var busType in eventBusTypes) {
                 var clearMethod = busType.GetMethod("Clear", BindingFlags.Static | BindingFlags.NonPublic);
                 clearMethod?.Invoke(null, null);
             }
+
+            //Debug.Log("CinderUtils.Events: EventBusManager: Event buses cleaned.");
         }
     }
 
