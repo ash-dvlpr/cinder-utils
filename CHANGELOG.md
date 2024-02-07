@@ -5,8 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
 
+
+## [Unreleased]
+### Added
+### Changed
+### Removed
+### Fixed
+
+
+## [v1.0.2] - 2024-02-07
 ### Added
  - Added base class for custom property drawers: `CinderPropertyDrawer`.
  - Added extension methods:
@@ -22,10 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Improved `[ConditionalField]` attributes to take values as `object`, without converting to `string` internally, this allows to check for `null`.
  - Improved examples for the `ConditionalFieldAttribute`.
  - Made custom property drawers (`[Disabled]`, `[DisabledOnPlay]`, `[ConditionalField]`) extend `CinderPropertyDrawer`.
- - Made the `[DisabledOnPlay]` attribute reuse `[Disabled]`'s code.
 
-### Removed
-### Fixed
 
 
 ## [v1.0.1] - 2024-02-06
@@ -40,7 +45,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [v1.0.0] - 2024-02-06
-
 ### Added
  - Created basic unity package with AssemblyDefinitions for the `Editor` and `Runtime` code.
  - The namespace for the `Runtime` AssemblyDefinition is: `CinderUtils`.
@@ -66,6 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.0.1...HEAD
+[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.0.2...master
+[v1.0.2]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.2
 [v1.0.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.1
 [v1.0.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.0
