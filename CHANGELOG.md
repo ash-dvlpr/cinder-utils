@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Added extension methods:
    - EnumeratorExtensions:
      - `IEnumerator.ToEnumerable()`: Converts an IEnumerator to an IEnumerable.
+   - TransformExtensions:
+     - `Transform.Children()`: Returns an `IEnumerable` of all the child Transforms of that transform.
+   - GameObjectExtensions:
+     - `GameObject.OrNull()`: Returns the object or null if the object is null or deinitializing.
+     - `GameObject.Children()`: Returns an `IEnumerable` of all the child GameObjects of that GameObject.
 
 ### Changed
  - Improved `[ConditionalField]` attributes to take values as `object`, without converting to `string` internally, this allows to check for `null`.
