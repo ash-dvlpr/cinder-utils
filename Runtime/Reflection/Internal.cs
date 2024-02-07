@@ -58,7 +58,7 @@ namespace CinderUtils.Reflection {
                 // Could variable for type "parentType" get assigned a value of type "type"?
                 // If so, the type is a subtype
                 if (parentType.IsAssignableFrom(type)) {
-                    Debug.Log($"CinderUtils: AssemblyUtils: Found Subtype of '{parentType}': '{type.Name}' in Assembly '{assembly.GetName().Name}'.");
+                    //Debug.Log($"CinderUtils: AssemblyUtils: Found Subtype of '{parentType}': '{type.Name}' in Assembly '{assembly.GetName().Name}'.");
                     subtypes.Add(type);
                 }
             }

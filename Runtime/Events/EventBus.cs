@@ -12,21 +12,21 @@ namespace CinderUtils.Events {
     // An EventBus will be created for every type of event declared.
     public interface IEvent { }
 
-    // Quality Of Life: Global EventBus
+    // Public Global EventBus for use by the user.
     public static class EventBus {
         public static void Register<T>(EventBinding<T> binding) where T : IEvent => EventBus<T>.Register(binding);
         public static void Deregister<T>(EventBinding<T> binding) where T : IEvent => EventBus<T>.Deregister(binding);
-        public static void Raise<T>(T @event) where T : IEvent => EventBus<T>.Raise(@event);
+        public static void Raise<T>(T @event = default) where T : IEvent => EventBus<T>.Raise(@event);
     }
 
     // EventBus for a concrete event type
-    public static class EventBus<T> where T : IEvent {
+    internal static class EventBus<T> where T : IEvent {
         static readonly HashSet<EventBinding<T>> bindings = new();
 
-        public static void Register(EventBinding<T> binding) => bindings.Add(binding);
-        public static void Deregister(EventBinding<T> binding) => bindings.Remove(binding);
+        internal static void Register(EventBinding<T> binding) => bindings.Add(binding);
+        internal static void Deregister(EventBinding<T> binding) => bindings.Remove(binding);
 
-        public static void Raise(T @event) {
+        internal static void Raise(T @event = default) {
             foreach (var binding in bindings) {
                 binding.onEvent?.Invoke(@event);
                 binding.onEventNotify?.Invoke();
