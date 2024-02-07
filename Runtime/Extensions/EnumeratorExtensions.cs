@@ -6,8 +6,13 @@ using System.Text;
 
 namespace CinderUtils.Extensions {
 
-    // Extensions for Enumerations
+    // Extensions for IEnumerations and IEnumerables
     public static class EnumeratorExtensions {
+        public static IEnumerable<T> ToEnumerable<T>(this IEnumerator<T> e) {
+            while (e.MoveNext()) {
+                yield return e.Current;
+            }
+        }
 
         public static bool NullOrEmpty<T>(this IEnumerable<T> enumerable) {
             return ( enumerable == null || enumerable.Count() == 0 );

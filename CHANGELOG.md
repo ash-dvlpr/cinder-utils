@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
  - Added base class for custom property drawers: `CinderPropertyDrawer`.
+ - Added extension methods:
+   - EnumeratorExtensions:
+     - `IEnumerator.ToEnumerable()`: Converts an IEnumerator to an IEnumerable.
 
 ### Changed
  - Improved `[ConditionalField]` attributes to take values as `object`, without converting to `string` internally, this allows to check for `null`.
