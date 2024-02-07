@@ -10,8 +10,8 @@ using CinderUtils.Extensions;
 namespace CinderUtils.Reflection {
 
     public static partial class AssemblyUtils {
-        public static IReadOnlyDictionary<AssemblyType, Assembly> AsseblyCache {
-            get => asseblyCache;
+        public static IReadOnlyDictionary<AssemblyType, Assembly> AssemblyCache {
+            get => assemblyCache;
         }
 
         // Predefined Assemblies: https://docs.unity3d.com/Manual/ScriptCompileOrderFolders.html 
@@ -35,8 +35,8 @@ namespace CinderUtils.Reflection {
 
             List<Type> subtypes = new();
             foreach (var target in targetAssemblies) {
-                if (AsseblyCache.ContainsKey(target)) { 
-                    subtypes.AddRange(GetSubtypesInAssemblyOf<T>(AsseblyCache[target]));
+                if (AssemblyCache.ContainsKey(target)) { 
+                    subtypes.AddRange(GetSubtypesInAssemblyOf<T>(AssemblyCache[target]));
                 }
             }
 

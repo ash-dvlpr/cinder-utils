@@ -10,11 +10,11 @@ using CinderUtils.Extensions;
 namespace CinderUtils.Reflection {
 
     public static partial class AssemblyUtils {
-        internal static Dictionary<AssemblyType, Assembly> asseblyCache;
+        internal static Dictionary<AssemblyType, Assembly> assemblyCache;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         internal static void Initialize() {
-            asseblyCache = GetAssemblies();
+            assemblyCache = GetAssemblies();
             Debug.Log("CinderUtils.Reflection: AssemblyUtils initialized.");
         }
 
