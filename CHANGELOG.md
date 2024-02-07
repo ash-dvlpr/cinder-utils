@@ -9,11 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+ - Added examples for the event system under `Samples~/Events`.
+
 ### Changed
  - Moved basic code examples from `Samples~/Basic` to `Samples~/General`.
 
 ### Removed
 ### Fixed
+
 
 
 ## [v1.0.2] - 2024-02-07

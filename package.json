@@ -21,6 +21,11 @@
       "displayName": "Basic Examples",
       "description": "Contains some Assets that make use of the package's basic utilites.",
       "path": "Samples~/General"
+    },
+    {
+      "displayName": "EventBus Examples",
+      "description": "Contains some Assets with usage examples of the EventBus system.",
+      "path": "Samples~/Events"
     }
   ]
 }
