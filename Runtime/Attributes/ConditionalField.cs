@@ -13,7 +13,7 @@ namespace CinderUtils.Attributes {
     [AttributeUsage(AttributeTargets.Field)]
     public abstract class ConditionalFieldAttribute : PropertyAttribute {
         public string targetFieldName;
-        public string[] compareValues;
+        public object[] compareValues;
         public bool inverse = false;
         public bool IsSet => !targetFieldName.NullOrEmpty() && !compareValues.NullOrEmpty();
 
@@ -23,9 +23,7 @@ namespace CinderUtils.Attributes {
         internal ConditionalFieldAttribute(string targetFieldName, bool inverse = false, params object[] compareValues) {
             this.targetFieldName = targetFieldName;
             this.inverse = inverse;
-
-            // Transform to array of strings
-            this.compareValues = compareValues.Select(value => value.ToString()).ToArray();
+            this.compareValues = compareValues;
         }
     }
 
