@@ -11,11 +11,16 @@ using static UnityEngine.GraphicsBuffer;
 namespace CinderUtils.Reflection {
 
     public static partial class AssemblyUtils {
+        /// <summary>
+        /// Easily accesible cache with references to <see cref="PredefinedAssembly">Unity's Predefined Assemblies</see>.
+        /// </summary>
         public static IReadOnlyDictionary<PredefinedAssembly, Assembly> PredefinedAssemblyCache {
             get => predefinedAssemblyCache;
         }
-
-        // Predefined Assemblies: https://docs.unity3d.com/Manual/ScriptCompileOrderFolders.html 
+        
+        /// <summary>
+        /// Enum that represents <see href="https://docs.unity3d.com/Manual/ScriptCompileOrderFolders.html">Unity's Predefined Assemblies</see>.
+        /// </summary>
         public enum PredefinedAssembly : byte {
             Unknown = 0,
             Assembly_CSharp_FirstPass           = 1, // Assembly-CSharp-firstpass
@@ -24,8 +29,14 @@ namespace CinderUtils.Reflection {
             Assembly_CSharpEditor               = 4, // Assembly-CSharp-Editor
         }
 
-        // Returns all the subtypes of some Type T inside the target AssemblyTypes.
-        // By default will only look in the Assembly_CSharp, and Assembly_CSharpEditor assemblies.
+        /// <summary>
+        /// Returns all subtypes of some Type <paramref name="T"/> found inside the Application's Assemblies.
+        /// </summary>
+        /// 
+        /// <typeparam name="T">Some generic Type</typeparam>
+        /// <param name="searchPredefinedAssemblies">Whether or not to search only inside Unity's PredefinedAssemblies.</param>
+        /// <param name="targetAssemblies">What <see cref="PredefinedAssembly">Predefined Assemblies</see> to seach.</param>
+        /// <returns></returns>
         public static HashSet<Type> GetSubtypesOf<T>(bool searchPredefinedAssemblies = true, ICollection<PredefinedAssembly> targetAssemblies = null) {
             IEnumerable<Assembly> assemblies;
 

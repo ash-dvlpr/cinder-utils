@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
    - All events are sent through the `EventBus<T>` corresponding to the type parameter `T` of the `Raise<T>()`, tho you could pass in a an event object of a derived class through the base clases's channel if you cast the object.
    - To recieve events, you must create an `EventBinding<T>`, to which you atach handler methods to the `OnEvent` and `OnEventNotify` events, and then `Register()` the binding on the `EventBus`. Make sure to `Deregister()` the binding when the object gets destroyed or disabled.
  - Added examples for the event system under `Samples~/Events`.
+ - Created some Reflection utilities under the `CinderUtils.Reflection` namespace:
+   - `AssemblyUtils` Used to retrieve Types from the game's Assemblies:
+     - `PredefinedAssembly`: Used to be able to index into the `PredefinedAssemblyCache`.
+     - `PredefinedAssemblyCache`: Easily accesible cache with the Assemblies of unity's predefined assemblies.
+     - `GetSubtypesOf<T>(bool, ICollection<PredefinedAssembly>)`: Used to get all the subtypes of some Type `T`. Used internally to manage the `EventBus` cleanup.
 
 ### Changed
  - Moved basic code examples from `Samples~/Basic` to `Samples~/General`.
