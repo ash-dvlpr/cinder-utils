@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+ - Created a generic event bus system under the `CinderUtils.Events` namespace:
+   - To declare an event type, implement the `IEvent` interface for some type (be it an object or struct).
+   - Making use of the static `EventBus` class, you can `Register<T>(EventBinding<T> binding)` bindings to recieve events, or `Raise<T>(T event)` an event so that it gets propagated across bindings.
+   - All events are sent through the `EventBus<T>` corresponding to the type parameter `T` of the `Raise<T>()`, tho you could pass in a an event object of a derived class through the base clases's channel if you cast the object.
+   - To recieve events, you must create an `EventBinding<T>`, to which you atach handler methods to the `OnEvent` and `OnEventNotify` events, and then `Register()` the binding on the `EventBus`. Make sure to `Deregister()` the binding when the object gets destroyed or disabled.
  - Added examples for the event system under `Samples~/Events`.
 
 ### Changed
