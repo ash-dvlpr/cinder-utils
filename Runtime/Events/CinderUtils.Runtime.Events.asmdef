@@ -1,0 +1,16 @@
+{
+    "name": "CinderUtils.Runtime.Events",
+    "rootNamespace": "CinderUtils.Events",
+    "references": [
+        "GUID:f467596985c78004e95e9536b68e950e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
