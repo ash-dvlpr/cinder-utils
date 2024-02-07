@@ -15,10 +15,10 @@ using CinderUtils.Reflection;
 namespace CinderUtils.Events {
 
     public static class EventBusManager {
-        internal static List<Type> eventTypes;
-        internal static List<Type> eventBusTypes;
+        internal static HashSet<Type> eventTypes;
+        internal static HashSet<Type> eventBusTypes;
 
-        public static IReadOnlyList<Type> EventTypes { get => eventTypes.AsReadOnly(); }
+        public static IReadOnlyCollection<Type> EventTypes { get => eventTypes; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
         internal static void Initialize() {
@@ -46,8 +46,8 @@ namespace CinderUtils.Events {
 #endif
 
 
-        static List<Type> GetEventBusTypes() {
-            List<Type> eventBusTypes = new();
+        static HashSet<Type> GetEventBusTypes() {
+            HashSet<Type> eventBusTypes = new();
 
             var baseBusType = typeof(EventBus<>);
             foreach (var eventType in eventTypes) {

@@ -4,58 +4,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 using CinderUtils.Extensions;
 
 
 namespace CinderUtils.Reflection {
 
     public static partial class AssemblyUtils {
-        internal static Dictionary<AssemblyType, Assembly> assemblyCache;
+        internal static Dictionary<PredefinedAssembly, Assembly> predefinedAssemblyCache;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         internal static void Initialize() {
-            assemblyCache = GetAssemblies();
+            predefinedAssemblyCache = GetPredefinedAssemblies();
             Debug.Log("CinderUtils.Reflection: AssemblyUtils initialized.");
         }
 
-        internal static AssemblyType? GetAssemblyType(string assemblyName) {
+        internal static PredefinedAssembly? GetAssemblyType(string assemblyName) {
             return assemblyName switch {
-                "Assembly-CSharp" => AssemblyType.Assembly_CSharp,
-                "Assembly-CSharp-Editor" => AssemblyType.Assembly_CSharpEditor,
-                "Assembly-CSharp-firstpass" => AssemblyType.Assembly_CSharp_FirstPass,
-                "Assembly-CSharp-Editor-firstpass" => AssemblyType.Assembly_CSharpEditor_FirstPass,
+                "Assembly-CSharp" => PredefinedAssembly.Assembly_CSharp,
+                "Assembly-CSharp-Editor" => PredefinedAssembly.Assembly_CSharpEditor,
+                "Assembly-CSharp-firstpass" => PredefinedAssembly.Assembly_CSharp_FirstPass,
+                "Assembly-CSharp-Editor-firstpass" => PredefinedAssembly.Assembly_CSharpEditor_FirstPass,
                 _ => null
             };
         }
 
-        internal static bool TryGetAssemblyType(string assemblyName, out AssemblyType? type) {
+        internal static bool TryGetAssemblyType(string assemblyName, out PredefinedAssembly? type) {
             type = GetAssemblyType(assemblyName);
-            return type != null && type != AssemblyType.Unknown;
+            return type != null && type != PredefinedAssembly.Unknown;
         }
 
         // Returns a collection of Types per AssemblyType.
-        internal static Dictionary<AssemblyType, Assembly> GetAssemblies() {
+        internal static Dictionary<PredefinedAssembly, Assembly> GetPredefinedAssemblies() {
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            Dictionary<AssemblyType, Assembly> assemblyCache = new();
+            Dictionary<PredefinedAssembly, Assembly> assemblyCache = new();
 
             // Extract all the types from the defined assemblies (AssemblyType)
             foreach (Assembly asm in assemblies) {
                 if (TryGetAssemblyType(asm.GetName().Name, out var asmType)) {
-                    assemblyCache.Add((AssemblyType) asmType, asm);
+                    assemblyCache.Add((PredefinedAssembly) asmType, asm);
                 }
             }
 
             return assemblyCache;
         }
 
-        internal static List<Type> GetSubtypesInAssemblyOf<T>(Assembly assembly) {
+        internal static HashSet<Type> GetSubtypesInAssemblyOf<T>(Assembly assembly) {
             if (assembly == null) return null;
 
             var parentType = typeof(T);
-            List<Type> subtypes = new();
+            HashSet<Type> subtypes = new();
 
             foreach (Type type in assembly.GetTypes()) {
-                // Could variable for type "parentType" get assigned a value of type "type"?
+                // Could a variable of type "parentType" get assigned a value of the type "type"?
                 // If so, the type is a subtype
                 if (parentType.IsAssignableFrom(type)) {
                     //Debug.Log($"CinderUtils: AssemblyUtils: Found Subtype of '{parentType}': '{type.Name}' in Assembly '{assembly.GetName().Name}'.");
