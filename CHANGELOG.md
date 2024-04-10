@@ -9,11 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+### Changed
+### Removed
+### Fixed
+
+
+
+## [v1.1.0] - 2024-04-10
+### Added
  - Created a generic event bus system under the `CinderUtils.Events` namespace:
-   - To declare an event type, implement the `IEvent` interface for some type (be it an object or struct).
+   - To declare an event type, implement the `IEvent` interface for some type (be it a class or a struct).
    - Making use of the static `EventBus` class, you can `Register<T>(EventBinding<T> binding)` bindings to recieve events, or `Raise<T>(T event)` an event so that it gets propagated across bindings.
    - All events are sent through the `EventBus<T>` corresponding to the type parameter `T` of the `Raise<T>()`, tho you could pass in a an event object of a derived class through the base clases's channel if you cast the object.
-   - To recieve events, you must create an `EventBinding<T>`, to which you atach handler methods to the `OnEvent` and `OnEventNotify` events, and then `Register()` the binding on the `EventBus`. Make sure to `Deregister()` the binding when the object gets destroyed or disabled.
+   - To recieve events, you must create an `EventBinding<T>`, to which you register handler methods to the `OnEvent` and `OnEventNotify` events, and then `Register()` the binding on the `EventBus`. Make sure to `Deregister()` the binding when the object gets destroyed or disabled.
  - Added examples for the event system under `Samples~/Events`.
  - Created some Reflection utilities under the `CinderUtils.Reflection` namespace:
    - `AssemblyUtils` Used to retrieve Types from the game's Assemblies:
@@ -23,9 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
  - Moved basic code examples from `Samples~/Basic` to `Samples~/General`.
-
-### Removed
-### Fixed
 
 
 
@@ -85,7 +90,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.0.2...master
+[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.1.0...master
+[v1.1.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.1.0
 [v1.0.2]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.2
 [v1.0.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.1
 [v1.0.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.0
