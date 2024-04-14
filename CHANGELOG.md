@@ -12,15 +12,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+### Changed
+### Removed
+### Fixed
+
+
+
+## [v1.1.1] - 2024-04-14
+### Added
  - Added `CinderConfigurationMenu` class as general place to add menu entries for the package.
  - Added `CINDER_DEBUG` define that can be toggled with the `Enable Debug Mode`/`Disable Debug Mode` entries on the `CinderUtils` menu.
  - Created `CinderDebug` static class for general use. All the methods will be ignored without the `CINDER_DEBUG` define being set.
 
 ### Changed
  - Internal library logging now make use `CinderDebug` instead of `UnityEngine.Debug`, making it dependant on the `CINDER_DEBUG` define.
-
-### Removed
-### Fixed
 
 
 
@@ -99,7 +104,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.1.0...master
+[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.1.1...master
+[v1.1.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.1.1
 [v1.1.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.1.0
 [v1.0.2]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.2
 [v1.0.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.0.1
