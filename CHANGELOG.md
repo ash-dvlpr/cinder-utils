@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+ - Added `CinderConfigurationMenu` class as general place to add menu entries for the package.
+ - Added `CINDER_DEBUG` define that can be toggled with the `Enable Debug Mode`/`Disable Debug Mode` entries on the `CinderUtils` menu.
+ - Created `CinderDebug` static class for general use. All the methods will be ignored without the `CINDER_DEBUG` define being set.
+
 ### Changed
 ### Removed
 ### Fixed
