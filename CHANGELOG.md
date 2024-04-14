@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## Known Bugs
+- If you are inspecting the values of a script that has one of CinderUtil's custom attribute drawers, like `[Disabled]/[DisabledOnPlay]` when the patent object gets destroyed, you'll get the following Editor only exception: `SerializedObject target has been destroyed`.
+
 
 ## [Unreleased]
 ### Added
