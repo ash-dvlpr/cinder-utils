@@ -25,7 +25,7 @@ namespace CinderUtils.Events {
             eventTypes = AssemblyUtils.GetSubtypesOf<IEvent>(false);
             eventBusTypes = GetEventBusTypes();
 
-            Debug.Log("CinderUtils.Events: EventBusManager initialized.");
+            CinderDebug.Log("CinderUtils.Events: EventBusManager initialized.");
         }
 
 #if UNITY_EDITOR
@@ -64,7 +64,7 @@ namespace CinderUtils.Events {
                 clearMethod?.Invoke(null, null);
             }
 
-            //Debug.Log("CinderUtils.Events: EventBusManager: Event buses cleaned.");
+            CinderDebug.Log("CinderUtils.Events: EventBusManager: Event buses cleaned.");
         }
     }
 

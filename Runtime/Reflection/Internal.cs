@@ -15,7 +15,7 @@ namespace CinderUtils.Reflection {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         internal static void Initialize() {
             predefinedAssemblyCache = GetPredefinedAssemblies();
-            Debug.Log("CinderUtils.Reflection: AssemblyUtils initialized.");
+            CinderDebug.Log("CinderUtils.Reflection: AssemblyUtils initialized.");
         }
 
         internal static PredefinedAssembly? GetAssemblyType(string assemblyName) {
@@ -68,7 +68,7 @@ namespace CinderUtils.Reflection {
                 // Could a variable of type "parentType" get assigned a value of the type "type"?
                 // If so, the type is a subtype
                 if (parentType.IsAssignableFrom(type)) {
-                    //Debug.Log($"CinderUtils: AssemblyUtils: Found Subtype of '{parentType}': '{type.Name}' in Assembly '{assembly.GetName().Name}'.");
+                    CinderDebug.Log($"CinderUtils: AssemblyUtils: Found Subtype of '{parentType}': '{type.Name}' in Assembly '{assembly.GetName().Name}'.");
                     subtypes.Add(type);
                 }
             }

@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Created `CinderDebug` static class for general use. All the methods will be ignored without the `CINDER_DEBUG` define being set.
 
 ### Changed
+ - Internal library logging now make use `CinderDebug` instead of `UnityEngine.Debug`, making it dependant on the `CINDER_DEBUG` define.
+
 ### Removed
 ### Fixed
 
