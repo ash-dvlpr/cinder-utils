@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+ - Added extension methods:
+   - TypeExtensions:
+     - `Type.Is<T>()`: Reflection alternative to `someObj is SomeType`. Usage would be `someObj.GetType().Is<SomeType>()`.
 ### Changed
 ### Removed
 ### Fixed

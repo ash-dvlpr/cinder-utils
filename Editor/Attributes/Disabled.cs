@@ -18,6 +18,7 @@ namespace CinderUtils.Editor {
             bool prevStatus = GUI.enabled;
             GUI.enabled = IsEnabled;
 
+            // TODO: Debug why the property looses it's target.
             EditorGUI.PropertyField(position, property, label, false);
             GUI.enabled = prevStatus;
         }

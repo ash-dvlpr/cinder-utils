@@ -6,6 +6,7 @@ using UnityEngine;
 using CinderUtils.Extensions;
 using CinderUtils.Attributes;
 
+
 public class SampleExtensionsComponent : MonoBehaviour {
     [Disabled, SerializeField] List<string> greetings = new List<string>(){ "Hello", "Hi", "Hey", "Howdy" };
 
@@ -22,5 +23,11 @@ public class SampleExtensionsComponent : MonoBehaviour {
         greetings.ForEach(g => {
             Debug.Log($"ICollection.ForEach(): {g}, how's your day going?");
         });
+
+        Debug.Log($"ClassA is ClassB: {typeof(ClassA).Is<ClassB>()}");
+        Debug.Log($"ClassB is ClassA: {typeof(ClassB).Is<ClassA>()}");
     }
 }
+
+public class ClassA { }
+public class ClassB : ClassA { }
