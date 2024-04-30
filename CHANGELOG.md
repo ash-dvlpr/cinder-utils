@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
    - `ICollection.LoopingGet(int i)`
    - `IDictionary.GetValue(key, defaultValue = default)`
  - Added a `Utils` static class under the `CinderUtils` namespace for general utilities.
+   - `GetMousePos2D()`, `GetMousePos3D()`: Return the the world coordinates of the mouse.
+   - `ShootMouseRay3D(out hit)`: Shoot a Raycast from the camera in the direction of the mouse.
+   - `SecondsToFormattedMinutes(int secs)`, `SecondsToFormattedHours(int secs)`: Formats seconds to strings in the`MM:ss` and `HH:MM:ss` formats respectively.
  - Added `MY_DEBUG` define for use by the user. Can can be toggled with the `Enable 'MY_DEBUG'`/`Disable 'MY_DEBUG'` entries on the `CinderUtils` menu.
 ### Changed
 ### Removed
