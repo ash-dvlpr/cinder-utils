@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - CollectionExtensions:
    - `ICollection.LoopingGet(int i)`
    - `IDictionary.GetValue(key, defaultValue = default)`
+ - Added a `Utils` static class under the `CinderUtils` namespace for general utilities.
+ - Added `MY_DEBUG` define for use by the user. Can can be toggled with the `Enable 'MY_DEBUG'`/`Disable 'MY_DEBUG'` entries on the `CinderUtils` menu.
 ### Changed
 ### Removed
 ### Fixed
