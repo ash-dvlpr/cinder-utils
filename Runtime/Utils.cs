@@ -80,7 +80,7 @@ namespace CinderUtils {
         /// <summary>
         /// Converts seconds to minutes and seconds (MM:ss).
         /// </summary>
-        public static string SecondsToFormattedMinutes(float totalSeconds) {
+        public static string SecondsToFormattedMinutes(double totalSeconds) {
             TimeSpan timeSpan = TimeSpan.FromSeconds(totalSeconds);
 
             return $"{timeSpan.TotalMinutes:00}:{timeSpan.Seconds:00}";
@@ -89,7 +89,7 @@ namespace CinderUtils {
         /// <summary>
         /// Converts seconds to hours, minutes and seconds (HH:MM:ss).
         /// </summary>
-        public static string SecondsToFormattedHours(float totalSeconds) {
+        public static string SecondsToFormattedHours(double totalSeconds) {
             TimeSpan timeSpan = TimeSpan.FromSeconds(totalSeconds);
 
             return $"{timeSpan.TotalHours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
