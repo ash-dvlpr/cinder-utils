@@ -9,22 +9,6 @@ using CinderUtils.Extensions;
 namespace CinderUtils.Editor {
     public class CinderConfigurationMenu : MonoBehaviour {
 
-        #region CinderDebug Toggling
-#if CINDER_DEBUG
-        [MenuItem("CinderUtils/Disable Debug Mode", false, -1000)]
-        private static void DisableCinderDebug() {
-            bool result = SetDefine(CinderDebug.CINDER_DEBUG, false);
-            if (result) Debug.LogWarning($"CinderUtils: Disabled debug features.");
-        }
-#else
-        [MenuItem("CinderUtils/Enable Debug Mode", false, -1000)]
-        private static void EnableCinderDebug() {
-            bool result = SetDefine(CinderDebug.CINDER_DEBUG, true);
-            if (result) Debug.LogWarning($"CinderUtils: Enabled debug features.");
-        }
-#endif
-        #endregion
-
         #region Common Stuff
         internal static bool SetDefine(string define, bool status) {
             // Get defines
@@ -54,5 +38,42 @@ namespace CinderUtils.Editor {
         }
 
         #endregion
+
+        #region CinderDebug Toggling
+#if CINDER_DEBUG
+        [MenuItem("CinderUtils/Disable Debug Mode", false, -1000)]
+        private static void ToggleCinderDebug() {
+            bool enabled = true;
+#else
+        [MenuItem("CinderUtils/Enable Debug Mode", false, -1000)]
+        private static void ToggleCinderDebug() {
+            bool enabled = false;
+#endif
+            bool result = SetDefine(CinderDebug.CINDER_DEBUG, !enabled);
+            if (result) {
+                string display = enabled ? "Disabled" : "Enabled";
+                Debug.LogWarning($"CinderUtils: {display} debug features.");
+            }
+        }
+        #endregion
+
+        #region 'MY_DEBUG' Toggling
+#if MY_DEBUG
+        [MenuItem("CinderUtils/Disable 'MY_DEBUG'", false, -1000)]
+        private static void ToggleMyDebugFlag() {
+            bool enabled = true;
+#else
+        [MenuItem("CinderUtils/Enable 'MY_DEBUG'", false, -1000)]
+        private static void ToggleMyDebugFlag() {
+            bool enabled = false;
+#endif
+            bool result = SetDefine(Utils.MY_DEBUG, !enabled);
+            if (result) {
+                string display = enabled ? "Disabled" : "Enabled";
+                Debug.LogWarning($"CinderUtils: {display} the 'MY_DEBUG' custom define.");
+            }
+        }
+        #endregion
+
     }
 }
