@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using UnityEngine;
 
 
 namespace CinderUtils.Extensions {
@@ -11,6 +12,9 @@ namespace CinderUtils.Extensions {
             Type baseType = typeof(T);
             return baseType.IsAssignableFrom(type);
         }
-    }
 
+        public static bool IsMonoBehaviour(this Type t) {
+            return t.Is<MonoBehaviour>();
+        }
+    }
 }

@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+ - Added extension methods:
+   - TypeExtensions:
+     - `Type.IsMonoBehaviour()`: Check via Reflection if a Type extends `MonoBehaviour`.
 ### Changed
 ### Removed
 ### Fixed
