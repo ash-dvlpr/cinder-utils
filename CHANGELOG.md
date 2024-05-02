@@ -25,7 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
      - `IService`s will be instantiated and the instance will be cached in the case that the class is not also a `MonoBehaviour`.
      - `MonoBehaviourService`s (Or any class that extends both `MonoBehaviour` and `IService`) will have a `GameObject` created for them if there wasn't one already present. If using the `MonoBehaviourService` base class, on Awake it will be marked with `DontDestroyOnLoad()`.
 ### Changed
- - 
 ### Removed
  - `AssemblyUtils`: Removed reduntant Assembly cache, as it added unnecesary complexity.
    - `PredefinedAssembly` and `PredefinedAssemblyCache`.
@@ -78,7 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [v1.1.0] - 2024-04-10
 ### Added
- - Created a generic event bus system under the `CinderUtils.Events` namespace:
+ - Created a generic `EventBus` system under the `CinderUtils.Events` namespace:
    - To declare an event type, implement the `IEvent` interface for some type (be it a class or a struct).
    - Making use of the static `EventBus` class, you can `Register<T>(EventBinding<T> binding)` bindings to recieve events, or `Raise<T>(T event)` an event so that it gets propagated across bindings.
    - All events are sent through the `EventBus<T>` corresponding to the type parameter `T` of the `Raise<T>()`, tho you could pass in a an event object of a derived class through the base clases's channel if you cast the object.
