@@ -20,6 +20,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
    - `ShootMouseRay3D(out hit)`: Shoot a Raycast from the camera in the direction of the mouse.
    - `SecondsToFormattedMinutes(int secs)`, `SecondsToFormattedHours(int secs)`: Formats seconds to strings in the`MM:ss` and `HH:MM:ss` formats respectively.
  - Added `MY_DEBUG` define for use by the user. Can can be toggled with the `Enable 'MY_DEBUG'`/`Disable 'MY_DEBUG'` entries on the `CinderUtils` menu.
+ - Added extension methods:
+   - VectorExtensions:
+     - For `Vector3` and `Vector3Int`:
+       - `Vector3.Offset(offsetVector)`: Offsets the vector's XYZ components by adding another vector to it, and returns it.
+       - `Vector3.OffsetX(offset)`: Offsets the vector's X component by some amount, and returns it.
+       - `Vector3.OffsetY(offset)`: Offsets the vector's Y component by some amount, and returns it.
+       - `Vector3.OffsetZ(offset)`: Offsets the vector's Z component by some amount, and returns it.
+     - For `Vector2` and `Vector2Int`:
+       - `Vector2.Offset(offsetVector)`: Offsets the vector's XY components by adding another vector to it, and returns it.
+       - `Vector2.OffsetX(offset)`: Offsets the vector's X component by some amount, and returns it.
+       - `Vector2.OffsetY(offset)`: Offsets the vector's Y component by some amount, and returns it.
 ### Changed
 ### Removed
 ### Fixed
