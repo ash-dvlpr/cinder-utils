@@ -97,4 +97,8 @@ namespace CinderUtils {
         #endregion
 
     }
+
+    public class CinderUtilsException : Exception {
+        public CinderUtilsException(string message) : base($"CinderUtils: {message}") { }
+    }
 }

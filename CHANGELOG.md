@@ -16,6 +16,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
    - TypeExtensions:
      - `Type.HasAttribute<TAttr>()`: Check via Reflection if a Type has a specific `Attribute`.
      - `Type.IsMonoBehaviour()`: Check via Reflection if a Type extends `MonoBehaviour`.
+ - Added a basic `ServiceLocator` utility under the `CinderUtils.Services` namespace:
+   - `IService` interface to define new services.
+   - `MonoBehaviourService` base class that extends both `MonoBehaviour` and `IService` for ease of use.
+   - `Register<T>(service, @unsafe = false)`: Will try to register a service. By default it will throw an exception if the service was already registered. If running in unsafe mode, the service reference will be overriden instead.
+   - `Get<T>(forced = false)`: Will try to get the reference to the specified service. By default it will throw an exception if the service was not registered. If running in forced mode, the service will be insantiated if not found instead.
+   - `[AutoRegisteredService]` Attribute: Services marked with this Attribute will be initialized on the `ServiceLocator.Initialize()` method. This method is automatically called on the `SubsystemRegistration` runtime phase.
+     - `IService`s will be instantiated and the instance will be cached in the case that the class is not also a `MonoBehaviour`.
+     - `MonoBehaviourService`s (Or any class that extends both `MonoBehaviour` and `IService`) will have a `GameObject` created for them if there wasn't one already present. If using the `MonoBehaviourService` base class, on Awake it will be marked with `DontDestroyOnLoad()`.
 ### Changed
  - 
 ### Removed
