@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,7 +23,9 @@ namespace CinderUtils.Events {
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
         internal static void Initialize() {
-            eventTypes = AssemblyUtils.GetSubtypesOf<IEvent>(false);
+            eventTypes = new();
+            AssemblyUtils.GetSubtypesOf<IEvent>().ForEach(t => eventTypes.Add(t));
+
             eventBusTypes = GetEventBusTypes();
 
             CinderDebug.Log("CinderUtils.Events: EventBusManager initialized.");

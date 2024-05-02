@@ -14,9 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
  - Added extension methods:
    - TypeExtensions:
+     - `Type.HasAttribute<TAttr>()`: Check via Reflection if a Type has a specific `Attribute`.
      - `Type.IsMonoBehaviour()`: Check via Reflection if a Type extends `MonoBehaviour`.
 ### Changed
+ - 
 ### Removed
+ - `AssemblyUtils`: Removed reduntant Assembly cache, as it added unnecesary complexity.
+   - `PredefinedAssembly` and `PredefinedAssemblyCache`.
 ### Fixed
 
 
