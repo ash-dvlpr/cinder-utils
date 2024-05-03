@@ -18,6 +18,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [v1.3.0] - 2024-05-03
+### Added
+ - Added extension methods:
+   - TypeExtensions:
+     - `Type.HasAttribute<TAttr>()`: Check via Reflection if a Type has a specific `Attribute`.
+     - `Type.IsMonoBehaviour()`: Check via Reflection if a Type extends `MonoBehaviour`.
+
+ - Added a basic `ServiceLocator` utility under the `CinderUtils.Services` namespace:
+   - `IService` interface to define new services.
+   - `MonoBehaviourService` base class that extends both `MonoBehaviour` and `IService` for ease of use.
+
+   - `Register<T>(service, @unsafe = false)`: Will try to register a service. By default it will throw an exception if the service was already registered. If running in unsafe mode, the service reference will be overriden instead.
+   - `Get<T>(forced = false)`: Will try to get the reference to the specified service. By default it will throw an exception if the service was not registered. If running in forced mode, the service will be insantiated if not found instead.
+
+   - `[AutoRegisteredService]` Attribute: Services marked with this Attribute will be initialized on the `ServiceLocator.Initialize()` method. This method is automatically called on the `SubsystemRegistration` runtime phase.
+     - `IService`s will be instantiated and the instance will be cached in the case that the class is not also a `MonoBehaviour`.
+     - `MonoBehaviourService`s (Or any class that extends both `MonoBehaviour` and `IService`) will have a `GameObject` created for them if there wasn't one already present. If using the `MonoBehaviourService` base class, on Awake it will be marked with `DontDestroyOnLoad()`.
+
+### Removed
+ - `AssemblyUtils`: Removed reduntant Assembly cache, as it added unnecesary complexity.
+   - `PredefinedAssembly` and `PredefinedAssemblyCache`.
+
+
+
 ## [v1.2.0] - 2024-05-02
 ### Added
  - Added a `Utils` static class under the `CinderUtils` namespace for general utilities.
@@ -63,7 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [v1.1.0] - 2024-04-10
 ### Added
- - Created a generic event bus system under the `CinderUtils.Events` namespace:
+ - Created a generic `EventBus` system under the `CinderUtils.Events` namespace:
    - To declare an event type, implement the `IEvent` interface for some type (be it a class or a struct).
    - Making use of the static `EventBus` class, you can `Register<T>(EventBinding<T> binding)` bindings to recieve events, or `Raise<T>(T event)` an event so that it gets propagated across bindings.
    - All events are sent through the `EventBus<T>` corresponding to the type parameter `T` of the `Raise<T>()`, tho you could pass in a an event object of a derived class through the base clases's channel if you cast the object.
@@ -136,7 +160,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.2.0...master
+[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.3.0...master
+[v1.3.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.0
 [v1.2.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.2.0
 [v1.1.2]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.1.2
 [v1.1.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.1.1
