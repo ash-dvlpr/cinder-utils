@@ -18,6 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [v1.3.1] - 2024-05-04
+### Added
+ - Added more methods to the `Utils` class.
+   - `GetMouseViewportPos2D()`, `GetNormalizedMouseViewportPos2D()`: Returns the mouse's position in the viewport.
+
+
+
 ## [v1.3.0] - 2024-05-03
 ### Added
  - Added extension methods:
@@ -160,7 +167,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.3.0...master
+[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.3.1...master
+[v1.3.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.1
 [v1.3.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.0
 [v1.2.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.2.0
 [v1.1.2]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.1.2
