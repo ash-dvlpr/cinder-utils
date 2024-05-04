@@ -21,6 +21,23 @@ namespace CinderUtils {
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
+        /// <summary>
+        /// Returns the mouse's position in the viewport.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2 GetMouseViewportPos2D() {
+            return Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        }
+
+        /// <summary>
+        /// Returns the mouse's position in the viewport, in normalized coordinate space.
+        /// With (0,0) being the center of the viewport/screen.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2 GetNormalizedMouseViewportPos2D() {
+            return Camera.main.ScreenToViewportPoint(Input.mousePosition) * 2f - Vector2.one;
+        }
+
         #endregion
 
         #region 3D Physics
