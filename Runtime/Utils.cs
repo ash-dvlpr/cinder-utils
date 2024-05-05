@@ -1,8 +1,9 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-
 using UnityEngine;
+
+using CinderUtils.Extensions;
 
 
 namespace CinderUtils {
@@ -97,6 +98,16 @@ namespace CinderUtils {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GenerateSeed() {
             return Guid.NewGuid().GetHashCode();
+        }
+
+        public static T GetRandom<T>() where T : Enum {
+            var values = (T[]) Enum.GetValues(typeof(T));
+            return values.GetRandom();
+        }
+
+        public static T GetRandom<T>(System.Random RNG) where T : Enum {
+            var values = (T[]) Enum.GetValues(typeof(T));
+            return values.GetRandom(RNG);
         }
 
         #endregion
