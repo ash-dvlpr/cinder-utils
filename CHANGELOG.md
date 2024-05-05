@@ -18,6 +18,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [v1.3.2] - 2024-05-06
+### Added
+ - Added more methods to the `Utils` class.
+   - `GenerateSeed()`: Generates a random integer to use as a seed.
+ - Added extension methods:
+   - CollectionExtensions:
+     - `AddAll(items)`: Adds all the elements in the target IEnumerable to the collection.
+     - `GetRandom(RNG)`: Alternative to `GetRandom()` that uses the provided `System.Random` instead of `UnityEngine.Random`.
+   - EnumExtensions:
+     - `GetRandom()`: Return a random enum variant.
+     - `GetRandom(RNG)`: Alternative to `GetRandom()` that uses the provided `System.Random` instead of `UnityEngine.Random`.
+
+
+
 ## [v1.3.1] - 2024-05-04
 ### Added
  - Added more methods to the `Utils` class.
@@ -167,7 +181,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.3.1...master
+[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.3.2...master
+[v1.3.2]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.2
 [v1.3.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.1
 [v1.3.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.0
 [v1.2.0]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.2.0

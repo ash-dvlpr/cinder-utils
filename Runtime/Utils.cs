@@ -93,6 +93,14 @@ namespace CinderUtils {
         }
         #endregion
 
+        #region Randomness
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int GenerateSeed() {
+            return Guid.NewGuid().GetHashCode();
+        }
+
+        #endregion
+
         #region Number Formatting
         /// <summary>
         /// Converts seconds to minutes and seconds (MM:ss).
