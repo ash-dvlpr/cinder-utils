@@ -24,17 +24,4 @@ namespace CinderUtils.Extensions {
             return t.Is<MonoBehaviour>();
         }
     }
-
-    // Extensions for Enumerated Types
-    public static class EnumExtensions {
-        public static T GetRandom<T>(this T @enum) where T : Enum {
-            var values = (T[]) Enum.GetValues(typeof(T));
-            return values.GetRandom();
-        }
-
-        public static T GetRandom<T>(this T @enum, System.Random RNG) where T : Enum {
-            var values = (T[]) Enum.GetValues(typeof(T));
-            return values.GetRandom(RNG);
-        }
-    }
 }
