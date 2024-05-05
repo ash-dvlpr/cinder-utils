@@ -10,7 +10,7 @@ namespace CinderUtils.Extensions {
 
         public static bool Is<T>(this Type type) {
             Type baseType = typeof(T);
-            
+
             // Could a variable of type "parentType" get assigned a value of the type "type"?
             // If so, the type is a subtype
             return baseType.IsAssignableFrom(type);
@@ -22,6 +22,19 @@ namespace CinderUtils.Extensions {
 
         public static bool IsMonoBehaviour(this Type t) {
             return t.Is<MonoBehaviour>();
+        }
+    }
+
+    // Extensions for Enumerated Types
+    public static class EnumExtensions {
+        public static T GetRandom<T>(this T @enum) where T : Enum {
+            var values = (T[]) Enum.GetValues(typeof(T));
+            return values.GetRandom();
+        }
+
+        public static T GetRandom<T>(this T @enum, System.Random RNG) where T : Enum {
+            var values = (T[]) Enum.GetValues(typeof(T));
+            return values.GetRandom(RNG);
         }
     }
 }
