@@ -39,6 +39,8 @@ namespace CinderUtils.Editor {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             if (!shouldBeDrawn) return;
 
+            // TODO: Disable field with GUI.enabled, appart from not drawing it
+
             EditorGUI.PropertyField(position, property, label, true);
         }
 

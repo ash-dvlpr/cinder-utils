@@ -18,6 +18,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [v1.3.4] - 2024-06-01
+### Added
+ - More `ServiceLocator` methods:
+   - `bool TryGet<T>(out service)`: Safelly tries to retrieve the registered service. Returns false if it was unable to find the service.
+   - `Deregister<T>(service, @unsafe = false)`: Attempts to deregister the provided service. By default it will throw an exception if the registered service instance was different from the provided servide. If running in unsafe mode, the service will be deregistered regardless.
+
+
+
 ## [v1.3.3] - 2024-05-06
 ### Changed
  - Moved `GetRandom()` and `GetRandom(RNG)` from being extension methods on enumerated types, to being generic methods in the `Utils` class.
@@ -187,7 +195,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
-[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.3.3...master
+[unreleased]: https://github.com/ash-dvlpr/cinder-utils/compare/v1.3.4...master
+[v1.3.4]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.4
 [v1.3.3]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.3
 [v1.3.2]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.2
 [v1.3.1]: https://github.com/ash-dvlpr/cinder-utils/releases/tag/v1.3.1

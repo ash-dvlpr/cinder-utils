@@ -19,6 +19,8 @@ namespace CinderUtils.Editor {
             GUI.enabled = IsEnabled;
 
             // TODO: Debug why the property looses it's target.
+            // TODO: Switch to using EditorGUI's BeginDisabledGroup() and EndDisabledGroup() methods, instead of setting GUI.enabled
+            // TODO: Look into DecoratorDrawer s
             EditorGUI.PropertyField(position, property, label, false);
             GUI.enabled = prevStatus;
         }
