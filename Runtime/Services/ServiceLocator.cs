@@ -47,6 +47,20 @@ namespace CinderUtils.Services {
             Services[typeof(T)] = service;
         }
 
+        public static void Deregister<T>(T service, bool @unsafe = false) where T : IService, new() {
+            var serviceType = typeof(T);
+
+            // If there's a service registered for that Type
+            if (IsRegistered<T>()) {
+                // If the provided service instance is different from the registered one
+                if (!Services.ContainsValue(service) && !@unsafe)
+                    throw new CinderUtilsException($"ServiceLocator.Deregister(): Registered Service '{serviceType.Name}' was different from the provided service.");
+
+                // Remove it anyways if it's the correct one, or forced to do so
+                Services.Remove(serviceType);
+            }
+        }
+
         public static T Get<T>(bool forced = false) where T : IService, new() {
             var serviceType = typeof(T);
             // If it exists, return it
@@ -62,6 +76,13 @@ namespace CinderUtils.Services {
 
                 return service;
             }
+        }
+
+        public static bool TryGet<T>(out T service) where T : IService, new() {
+            if (IsRegistered<T>()) service = Get<T>(false);
+            else service = default;
+
+            return service != null;
         }
 
         internal static IEnumerable<Type> GetAutoRegisteredServiceTypes() {

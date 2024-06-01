@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+ - More `ServiceLocator` utility methods:
+   - `bool TryGet<T>(out service)`: Safelly tries to retrieve the registered service. Returns false if it was unable to find the service.
+   - `Deregister<T>(service, @unsafe = false)`: Attempts to deregister the provided service. By default it will throw an exception if the registered service instance was different from the provided servide. If running in unsafe mode, the service will be deregistered regardless.
 ### Changed
 ### Removed
 ### Fixed
