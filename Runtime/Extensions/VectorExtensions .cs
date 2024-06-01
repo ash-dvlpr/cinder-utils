@@ -9,6 +9,8 @@ namespace CinderUtils.Extensions {
     // Extensions for Vectors
     public static class VectorExtensions  {
 
+        // TODO: ManhattanDistances
+
         #region Vector3
         public static Vector3 Offset(this Vector3 vec, Vector3 offsetVector) {
             return vec + offsetVector;
